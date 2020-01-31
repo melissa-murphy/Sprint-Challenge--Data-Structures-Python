@@ -7,8 +7,22 @@ class RingBuffer:
         self.current = None
         self.storage = DoublyLinkedList()
 
+# ring buffer, i.e., circular queue
+# oldest item is overwritten by newest when buffer is full
+
     def append(self, item):
-        pass
+        # self.current is new item
+        if self.current is None:
+            self.current = self.storage.head
+
+        # but if the buffer is full, then ~~>
+        if self.storage.length == self.capacity:
+            self.current.value = item
+            self.current = self.current.next
+
+        # otherwise add new item to the tail of the queue
+        else:
+            self.storage.add_to_tail(item)
 
     def get(self):
         # Note:  This is the only [] allowed
