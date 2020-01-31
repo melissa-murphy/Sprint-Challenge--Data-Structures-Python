@@ -17,6 +17,15 @@ duplicates = []
 root = names_1[0]
 names_1_bst = Binary_Search_Tree(root)
 
+# add names from first list as base
+for name in names_1[1:]:
+    names_1_bst.insert(name)
+
+# names from list 2 for comparison
+for name in names_2:
+    if names_1_bst.contains(name):
+        duplicates.append(name)
+
 
 # for name_1 in names_1:
 #     for name_2 in names_2:

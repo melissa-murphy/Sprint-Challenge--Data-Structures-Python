@@ -1,6 +1,3 @@
-from dll_queue import Queue # do I need either of these?
-from dll_stack import Stack
-
 class Binary_Search_Tree:
     def __init__(self, value):
         self.value = value
@@ -26,7 +23,11 @@ class Binary_Search_Tree:
     def contains(self, target):
         if self.value == target:
             return True
-        elif target < self.value:
-            return self.left.contains(target) if self.left is not None else False
-        else:
-            return self.right.contains(target) is self.right is not None else False
+        elif target < self.value and self.left == None:
+            return False
+        elif target > self.value and self.right == None:
+            return False
+        elif target < self.value and self.left:
+            return self.left.contains(target)
+        elif target > self.value and self.right:
+            return self.right.contains(target)
